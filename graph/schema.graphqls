@@ -1,0 +1,43 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type User {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  email: String
+}
+
+type Product {
+  id: ID!
+  title: String!
+  description: String!
+  imageUrl: String!
+}
+
+type Recipe {
+  id: ID!
+  title: String!
+  description: String!
+  imageUrl: String!
+  products: [Product]
+  userId: ID!
+}
+
+input LoginInput {
+  username: String!
+  password: String!
+}
+
+type UserRecipes {
+  hits: [Recipe]
+}
+
+type Query {
+  getUserRecipes(id: ID!): UserRecipes
+}
+
+type Mutation {
+  login(input: LoginInput!): User!
+}
